@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Miras.MainPage" NavigationPage.HasNavigationBar="False">
+
+    <StackLayout Margin="20,50,20,0">
+        <Entry Placeholder="Enter Name" HeightRequest="50" x:Name="Name"/>
+        <Entry Placeholder="Enter Surname" HeightRequest="50" x:Name="SurName"/>
+        <Entry Placeholder="Enter Age" HeightRequest="50" x:Name="Age"/>
+        <Button Text="Add To DataBase" Clicked="AddPerson"/>
+        <Button Text="Remove From DataBase" Clicked="DropTable"/>
+        <ListView x:Name="CollectionView" RowHeight="100">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Edit" Clicked="EditPerson" CommandParameter="{Binding .}"/>
+                        </ViewCell.ContextActions>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Imie}" FontSize="Large"/>
+                                <Label Text="{Binding Nazwisko}" FontSize="Large"/>
+                            </StackLayout>
+                            <Label Text="{Binding Wiek}" FontSize="Medium" TextColor="Silver"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
